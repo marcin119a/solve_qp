@@ -13,6 +13,7 @@ set(SOURCE_FILES
         src/linear-algebra.c
         src/decomposeQP.cpp
         src/findSigExposures.cpp
+        src/bootstrap.cpp
         main.cpp
 )
 
