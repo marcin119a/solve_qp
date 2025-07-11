@@ -11,6 +11,8 @@ set(SOURCE_FILES
         src/solve.QP.c
         src/qr-update.c
         src/linear-algebra.c
+        src/decomposeQP.cpp
+        src/findSigExposures.cpp
         main.cpp
 )
 
