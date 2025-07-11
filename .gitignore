@@ -1,0 +1,58 @@
+# Build artifacts
+*.o
+*.obj
+*.exe
+*.dll
+*.lib
+*.so
+*.a
+*.out
+*.bin
+build/
+bin/
+obj/
+Debug/
+Release/
+x64/
+Win32/
+.idea
+
+# IDE specific files (e.g., Visual Studio, CMake, VSCode)
+.vs/
+*.vcxproj.user
+*.suo
+*.opensdf
+*.sdf
+*.ipch
+*.user
+*.filters
+*.sln.docstates
+*.cmake/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+vscode/
+.vscode/
+
+# Editor specific files (e.g., Vim, Emacs)
+*~
+*.swp
+*.swo
+*.bak
+#*#
+.#*
+
+# Log files
+*.log
+
+# Dependency management (e.g., Conan)
+conanbuildinfo.cmake
+conan_deps/
+.conan/
+
+# Miscellaneous
+*.orig
+*.rej
+*.tmp
+*.manifest
