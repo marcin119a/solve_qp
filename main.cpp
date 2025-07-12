@@ -1,34 +1,33 @@
 #include <iostream>
-#include "include/bootstrap.hpp"
+#include <chrono>
+#include "fit.hpp"
 
 int main() {
-    std::vector<double> m = {50, 90, 70};  // surowe mutacje
-    std::vector<std::vector<double>> P = {
-        {0.2, 0.3, 0.5},
-        {0.1, 0.4, 0.5},
-        {0.3, 0.1, 0.6}
-    };
+    std::string samples_path = "/Users/mw/CLionProjects/solver_test/data/tumorBRCA.txt";
+    std::string signatures_path = "/Users/mw/CLionProjects/solver_test/data/COSMIC_v2_SBS_GRCh37.txt";
+    std::string output_folder = "output";
 
-    int R = 100;
     double threshold = 0.01;
-    int mutation_count = 210;
-    double significance_level = 0.1;
+    int mutation_count = 1000; // -1: automatycznie wykrywany
+    int R = 100;
+    double significance_level = 0.01;
 
-    auto [selected_columns, result] = backward_elimination(
-        m, P, R, threshold, mutation_count, significance_level
+    auto start = std::chrono::high_resolution_clock::now();
+
+    fit(
+        samples_path,
+        output_folder,
+        threshold,
+        mutation_count,
+        R,
+        significance_level,
+        signatures_path,
+        false  // drop_zeros_columns
     );
 
-    std::cout << "Selected signatures: ";
-    for (int idx : selected_columns) std::cout << idx << " ";
-    std::cout << std::endl;
-
-    std::cout << "Final exposures: ";
-    for (const auto& val : result.first) {
-        std::cout << val[0] << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << "Final error: " << result.second[0] << std::endl;
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end - start;
+    std::cout << "⏱️ Execution time: " << elapsed_seconds.count() << "s\n";
 
     return 0;
 }

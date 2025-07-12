@@ -14,6 +14,8 @@ set(SOURCE_FILES
         src/decomposeQP.cpp
         src/findSigExposures.cpp
         src/bootstrap.cpp
+        src/csv_utils.cpp
+        src/fit.cpp
         main.cpp
 )
 
